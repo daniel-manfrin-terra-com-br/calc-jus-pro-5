@@ -20,7 +20,7 @@ All colors MUST be HSL.
 
     /* Custom Green #7BED9F for Buttons */
     --primary: 135 73% 70%;
-    --primary-foreground: 0 0% 0%;
+    --primary-foreground: 0 0% 20%;
     --primary-hover: 135 73% 65%;
     --primary-light: 135 73% 90%;
 
