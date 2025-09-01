@@ -18,11 +18,11 @@ All colors MUST be HSL.
     --popover: 0 0% 5%;
     --popover-foreground: 0 0% 100%;
 
-    /* Green Primary for Buttons */
-    --primary: 120 100% 25%;
+    /* Bright Green Primary for Buttons */
+    --primary: 120 100% 35%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 120 100% 20%;
-    --primary-light: 120 50% 10%;
+    --primary-hover: 120 100% 30%;
+    --primary-light: 120 50% 15%;
 
     /* Dark Secondary */
     --secondary: 0 0% 10%;
@@ -32,7 +32,7 @@ All colors MUST be HSL.
     --muted: 0 0% 10%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 120 50% 15%;
+    --accent: 120 60% 20%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -40,28 +40,28 @@ All colors MUST be HSL.
 
     --border: 0 0% 20%;
     --input: 0 0% 15%;
-    --ring: 120 100% 25%;
+    --ring: 120 100% 35%;
 
-    /* Dark Theme Gradients with Green Accents */
-    --gradient-primary: linear-gradient(135deg, hsl(120 100% 25%), hsl(120 100% 20%));
+    /* Dark Theme Gradients with Bright Green Accents */
+    --gradient-primary: linear-gradient(135deg, hsl(120 100% 35%), hsl(120 100% 30%));
     --gradient-subtle: linear-gradient(180deg, hsl(0 0% 0%), hsl(0 0% 5%));
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 5%), hsl(120 50% 8%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 8%), hsl(120 60% 12%));
 
-    /* Dark Shadows with Green Tint */
-    --shadow-soft: 0 2px 8px -2px hsl(120 100% 25% / 0.2);
-    --shadow-medium: 0 8px 25px -5px hsl(120 100% 25% / 0.3);
-    --shadow-strong: 0 15px 35px -5px hsl(120 100% 25% / 0.4);
+    /* Dark Shadows with Bright Green Tint */
+    --shadow-soft: 0 2px 8px -2px hsl(120 100% 35% / 0.2);
+    --shadow-medium: 0 8px 25px -5px hsl(120 100% 35% / 0.3);
+    --shadow-strong: 0 15px 35px -5px hsl(120 100% 35% / 0.4);
 
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 3%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 120 100% 25%;
+    --sidebar-primary: 120 100% 35%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 8%;
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 0 0% 15%;
-    --sidebar-ring: 120 100% 25%;
+    --sidebar-ring: 120 100% 35%;
   }
 }
 

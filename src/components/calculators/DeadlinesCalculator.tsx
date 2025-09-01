@@ -126,7 +126,7 @@ export function DeadlinesCalculator() {
           </div>
         </div>
         <Link to="/">
-          <Button variant="outline" size="sm" className="gap-2">
+          <Button variant="default" size="sm" className="gap-2">
             <Home className="h-4 w-4" />
             Voltar ao Início
           </Button>
@@ -212,7 +212,7 @@ export function DeadlinesCalculator() {
               </Select>
             </div>
 
-            <Button onClick={calcular} className="w-full" variant="gradient">
+            <Button onClick={calcular} className="w-full" variant="default">
               <Calculator className="mr-2 h-4 w-4" />
               Calcular Prazo Final
             </Button>
