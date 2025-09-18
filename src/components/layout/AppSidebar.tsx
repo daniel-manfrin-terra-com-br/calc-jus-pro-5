@@ -42,6 +42,11 @@ export function AppSidebar() {
             <h1 className="text-lg font-bold text-foreground">Calc Jus Pro</h1>
             <p className="text-xs text-muted-foreground">Calculadora Jurídica</p>
           </div>
+          <div className="flex items-center gap-1 ml-2">
+            <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
+            <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
+            <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
+          </div>
         </div>
       </SidebarHeader>
 
