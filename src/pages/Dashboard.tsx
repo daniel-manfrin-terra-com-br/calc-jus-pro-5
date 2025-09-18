@@ -118,7 +118,7 @@ export default function Dashboard() {
               </CardHeader>
               <CardContent className="pt-0">
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {module.features.filter(f => f).map((feature, idx) => <span key={idx} className="px-2 py-1 bg-primary-light text-primary text-xs rounded-full">
+                  {module.features.filter(f => f).map((feature, idx) => <span key={idx} className="px-2 py-1 bg-primary-light text-xs rounded-full text-slate-950">
                       {feature}
                     </span>)}
                 </div>
