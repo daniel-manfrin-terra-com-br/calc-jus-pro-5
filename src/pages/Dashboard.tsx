@@ -89,7 +89,7 @@ export default function Dashboard() {
                   <p className="text-sm text-primary font-medium">{stat.change}</p>
                 </div>
                 <div className="p-3 bg-primary-light rounded-lg">
-                  <stat.icon className="h-5 w-5 text-primary" />
+                  <stat.icon className="h-5 w-5 text-primary bg-slate-950" />
                 </div>
               </div>
             </CardContent>
