@@ -7,7 +7,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Clock, Calculator, Calendar, AlertCircle, Home } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-
 export function DeadlinesCalculator() {
   const [formData, setFormData] = useState({
     dataInicial: "",
@@ -16,7 +15,6 @@ export function DeadlinesCalculator() {
     tipoProcesso: "civel",
     incluirFeriados: "nao"
   });
-
   const [resultado, setResultado] = useState<{
     dataFinal: string;
     diasUteis: number;
@@ -24,33 +22,35 @@ export function DeadlinesCalculator() {
     feriados: number;
     observacoes: string[];
   } | null>(null);
-
   const calcular = () => {
     const dataInicio = new Date(formData.dataInicial);
     const prazoNum = parseInt(formData.prazo);
-    
     if (!formData.dataInicial || !formData.prazo) return;
-    
+
     // Feriados nacionais dinâmicos por ano
     const ano = dataInicio.getFullYear();
-    const feriadosNacionais = [
-      new Date(ano, 0, 1),   // Ano Novo
-      new Date(ano, 3, 21),  // Tiradentes
-      new Date(ano, 4, 1),   // Dia do Trabalhador
-      new Date(ano, 8, 7),   // Independência
-      new Date(ano, 9, 12),  // Nossa Senhora Aparecida
-      new Date(ano, 10, 2),  // Finados
-      new Date(ano, 10, 15), // Proclamação da República
-      new Date(ano, 11, 25), // Natal
-      // Adicionar feriados móveis se necessário (Carnaval, Sexta-feira Santa, etc.)
+    const feriadosNacionais = [new Date(ano, 0, 1),
+    // Ano Novo
+    new Date(ano, 3, 21),
+    // Tiradentes
+    new Date(ano, 4, 1),
+    // Dia do Trabalhador
+    new Date(ano, 8, 7),
+    // Independência
+    new Date(ano, 9, 12),
+    // Nossa Senhora Aparecida
+    new Date(ano, 10, 2),
+    // Finados
+    new Date(ano, 10, 15),
+    // Proclamação da República
+    new Date(ano, 11, 25) // Natal
+    // Adicionar feriados móveis se necessário (Carnaval, Sexta-feira Santa, etc.)
     ];
-    
     let dataAtual = new Date(dataInicio);
     let diasUteis = 0;
     let diasCorridos = 0;
     let feriadosEncontrados = 0;
     let dataFinal = new Date(dataInicio);
-    
     if (formData.incluirFeriados === "sim") {
       // Dias corridos - apenas adiciona o prazo
       if (formData.tipoPrazo === "dias") {
@@ -62,17 +62,12 @@ export function DeadlinesCalculator() {
     } else {
       // Dias úteis - conta apenas dias úteis (segunda a sexta, excluindo feriados)
       let prazoRestante = prazoNum;
-      
       while (prazoRestante > 0) {
         dataAtual.setDate(dataAtual.getDate() + 1);
         diasCorridos++;
-        
         const diaSemana = dataAtual.getDay(); // 0 = domingo, 6 = sábado
-        const ehFeriado = feriadosNacionais.some(feriado => 
-          feriado.getDate() === dataAtual.getDate() && 
-          feriado.getMonth() === dataAtual.getMonth()
-        );
-        
+        const ehFeriado = feriadosNacionais.some(feriado => feriado.getDate() === dataAtual.getDate() && feriado.getMonth() === dataAtual.getMonth());
+
         // Verifica se é dia útil (segunda a sexta) e não é feriado
         if (diaSemana >= 1 && diaSemana <= 5 && !ehFeriado) {
           diasUteis++;
@@ -81,10 +76,9 @@ export function DeadlinesCalculator() {
           feriadosEncontrados++;
         }
       }
-      
       dataFinal = new Date(dataAtual);
     }
-    
+
     // Ajustes específicos por tipo de processo
     const observacoes = [];
     if (formData.tipoProcesso === "trabalhista") {
@@ -97,13 +91,11 @@ export function DeadlinesCalculator() {
       observacoes.push("Suspensão durante recesso forense");
       observacoes.push("CPP - Arts. 798 a 803");
     }
-    
     if (formData.incluirFeriados === "nao") {
       observacoes.push("Cálculo em dias úteis (seg-sex, exceto feriados)");
     } else {
       observacoes.push("Cálculo em dias corridos (inclui feriados e fins de semana)");
     }
-    
     setResultado({
       dataFinal: dataFinal.toLocaleDateString("pt-BR"),
       diasUteis: formData.incluirFeriados === "sim" ? diasCorridos : diasUteis,
@@ -112,9 +104,7 @@ export function DeadlinesCalculator() {
       observacoes
     });
   };
-
-  return (
-    <div className="space-y-6">
+  return <div className="space-y-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-3 bg-gradient-primary rounded-xl">
@@ -147,13 +137,10 @@ export function DeadlinesCalculator() {
               <Label htmlFor="dataInicial" className="text-sm font-medium">
                 Data Inicial (intimação/citação)
               </Label>
-              <Input
-                id="dataInicial"
-                type="date"
-                value={formData.dataInicial}
-                onChange={(e) => setFormData({...formData, dataInicial: e.target.value})}
-                className="mt-1"
-              />
+              <Input id="dataInicial" type="date" value={formData.dataInicial} onChange={e => setFormData({
+              ...formData,
+              dataInicial: e.target.value
+            })} className="mt-1" />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
@@ -161,18 +148,17 @@ export function DeadlinesCalculator() {
                 <Label htmlFor="prazo" className="text-sm font-medium">
                   Prazo
                 </Label>
-                <Input
-                  id="prazo"
-                  type="number"
-                  placeholder="15"
-                  value={formData.prazo}
-                  onChange={(e) => setFormData({...formData, prazo: e.target.value})}
-                  className="mt-1"
-                />
+                <Input id="prazo" type="number" placeholder="15" value={formData.prazo} onChange={e => setFormData({
+                ...formData,
+                prazo: e.target.value
+              })} className="mt-1" />
               </div>
               <div>
                 <Label className="text-sm font-medium">Tipo</Label>
-                <Select value={formData.tipoPrazo} onValueChange={(value) => setFormData({...formData, tipoPrazo: value})}>
+                <Select value={formData.tipoPrazo} onValueChange={value => setFormData({
+                ...formData,
+                tipoPrazo: value
+              })}>
                   <SelectTrigger className="mt-1">
                     <SelectValue />
                   </SelectTrigger>
@@ -186,7 +172,10 @@ export function DeadlinesCalculator() {
 
             <div>
               <Label className="text-sm font-medium">Tipo de Processo</Label>
-              <Select value={formData.tipoProcesso} onValueChange={(value) => setFormData({...formData, tipoProcesso: value})}>
+              <Select value={formData.tipoProcesso} onValueChange={value => setFormData({
+              ...formData,
+              tipoProcesso: value
+            })}>
                 <SelectTrigger className="mt-1">
                   <SelectValue />
                 </SelectTrigger>
@@ -201,7 +190,10 @@ export function DeadlinesCalculator() {
 
             <div>
               <Label className="text-sm font-medium">Incluir Feriados</Label>
-              <Select value={formData.incluirFeriados} onValueChange={(value) => setFormData({...formData, incluirFeriados: value})}>
+              <Select value={formData.incluirFeriados} onValueChange={value => setFormData({
+              ...formData,
+              incluirFeriados: value
+            })}>
                 <SelectTrigger className="mt-1">
                   <SelectValue />
                 </SelectTrigger>
@@ -228,8 +220,7 @@ export function DeadlinesCalculator() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {resultado ? (
-              <div className="space-y-4">
+            {resultado ? <div className="space-y-4">
                 <div className="p-6 bg-gradient-primary rounded-xl text-center">
                   <p className="text-sm text-primary-foreground/80 mb-2">Data Final do Prazo</p>
                   <p className="text-3xl font-bold text-primary-foreground">
@@ -239,14 +230,14 @@ export function DeadlinesCalculator() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-4 bg-primary-light rounded-lg">
-                    <p className="text-sm text-muted-foreground">Dias Úteis</p>
-                    <p className="text-xl font-bold text-primary">
+                    <p className="text-sm text-slate-950">Dias Úteis</p>
+                    <p className="text-xl font-bold text-green-500">
                       {resultado.diasUteis} dias
                     </p>
                   </div>
                   <div className="p-4 bg-primary-light rounded-lg">
-                    <p className="text-sm text-muted-foreground">Dias Corridos</p>
-                    <p className="text-xl font-bold text-primary">
+                    <p className="text-sm text-slate-950">Dias Corridos</p>
+                    <p className="text-xl font-bold text-green-500">
                       {resultado.diasCorridos} dias
                     </p>
                   </div>
@@ -265,9 +256,7 @@ export function DeadlinesCalculator() {
                     <p className="text-sm font-medium text-secondary-foreground">Observações Importantes:</p>
                   </div>
                   <div className="space-y-1">
-                    {resultado.observacoes.map((obs, index) => (
-                      <p key={index} className="text-xs text-muted-foreground">• {obs}</p>
-                    ))}
+                    {resultado.observacoes.map((obs, index) => <p key={index} className="text-xs text-muted-foreground">• {obs}</p>)}
                   </div>
                 </div>
 
@@ -276,19 +265,15 @@ export function DeadlinesCalculator() {
                   <Badge variant="secondary">Calendário Oficial</Badge>
                   <Badge variant="secondary">Recesso Forense</Badge>
                 </div>
-              </div>
-            ) : (
-              <div className="text-center py-12">
+              </div> : <div className="text-center py-12">
                 <Calendar className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                 <p className="text-muted-foreground">Preencha os dados ao lado para calcular o prazo</p>
                 <p className="text-sm text-muted-foreground mt-2">
                   Cálculo baseado no CPC/2015 e calendário oficial do Poder Judiciário
                 </p>
-              </div>
-            )}
+              </div>}
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 }
