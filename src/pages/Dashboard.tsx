@@ -141,20 +141,20 @@ export default function Dashboard() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 bg-primary-light rounded-lg">
-              <h4 className="font-semibold text-primary mb-2">Tabelas TJSP</h4>
-              <p className="text-sm text-muted-foreground">
+              <h4 className="font-semibold mb-2 text-green-500">Tabelas TJSP</h4>
+              <p className="text-sm text-slate-950">
                 Tabelas Práticas de Atualização Monetária do Tribunal de Justiça de São Paulo
               </p>
             </div>
             <div className="p-4 bg-primary-light rounded-lg">
-              <h4 className="font-semibold text-primary mb-2">Lei 14.905/24</h4>
-              <p className="text-sm text-muted-foreground">
+              <h4 className="font-semibold mb-2 text-green-500">Lei 14.905/24</h4>
+              <p className="text-sm text-slate-950">
                 Nova legislação sobre juros moratórios em débitos judiciais
               </p>
             </div>
             <div className="p-4 bg-primary-light rounded-lg">
-              <h4 className="font-semibold text-primary mb-2">CPC/2015</h4>
-              <p className="text-sm text-muted-foreground">
+              <h4 className="font-semibold mb-2 text-green-500">CPC/2015</h4>
+              <p className="text-sm text-slate-950">
                 Código de Processo Civil - atualizações monetárias e prazos processuais
               </p>
             </div>
